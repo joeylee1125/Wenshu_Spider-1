@@ -21,19 +21,26 @@ class WenshuPipeline(object):
         db = self.client[dbname]
         db[docname].ensure_index('casedocid', unique=True)  # 设置文书ID为唯一索引,避免插入重复数据
         self.post = db[docname]
+        
+        db2 = self.client[dbname]
+        db2['docid'].ensure_index('docid', unique=True)  # 设置文书ID为唯一索引,避免插入重复数据
+        self.docid_post = db2['docid']
 
     def close_spider(self, spider):
         self.client.close()
 
     def process_item(self, item, spider):
         '''插入数据'''
+        self.docid_post.insert_one({"docid": item['casedocid'], "status": "downloaded"})
         try:
             data = dict(item)
             self.post.insert_one(data)
+            print("Inserted!")
             return item
         except DuplicateKeyError:
             # 索引相同,即为重复数据,捕获错误
             spider.logger.debug('Duplicate key error collection')
+            print("Insert failed, item already exist!")
             return item
 
 
