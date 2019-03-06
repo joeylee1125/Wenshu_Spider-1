@@ -27,9 +27,10 @@ class ProxyMiddleware(object):
     def __init__(self):
         # 阿布云代理服务器
         self.proxyServer = "http://http-dyn.abuyun.com:9020"
+        #self.proxyServer = "http://http-pro.abuyun.com:9010"
         # 代理隧道验证信息
-        proxyUser = "***在此填入阿布云通行证书***"
-        proxyPass = "***在此填入阿布云通行密钥***"
+        proxyUser = "H71R640O4D421P3D"
+        proxyPass = "16536AD5D969E2B7"
         self.proxyAuth = "Basic " + base64.urlsafe_b64encode(bytes((proxyUser + ":" + proxyPass), "ascii")).decode("utf8") # Python3
         # self.proxyAuth = "Basic " + base64.b64encode(proxyUser + ":" + proxyPass) # Python2
 
