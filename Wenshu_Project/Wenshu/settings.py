@@ -18,8 +18,9 @@ NEWSPIDER_MODULE = 'Wenshu.spiders'
 #连接MongoDB数据库
 MONGODB_HOST = '127.0.0.1'
 MONGODB_PORT = 27017
-MONGODB_DBNAME = 'Henry' #数据库名
-MONGODB_DOCNAME = 'wenshu' #表名
+MONGODB_DBNAME = 'WenshuDB' #数据库名
+MONGODB_DOCNAME = 'fhgw2014' #表名
+
 
 # 设置本地的IP代理池地址
 # PROXY_POOL_URL = 'http://localhost:5555/random'
@@ -208,3 +209,5 @@ LOG_ENCODING = 'utf-8'
 
 # 如果是True ，进程当中，所有标准输出（包括错误）将会被重定向到log中;例如：在爬虫代码中的 print（）
 LOG_STDOUT = False  # 默认为False
+
+
